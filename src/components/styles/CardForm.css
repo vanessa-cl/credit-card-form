@@ -1,0 +1,42 @@
+.form-label {
+  font-size: 1rem;
+  color: var(--very-dark-violet);
+  margin: 1rem 0;
+}
+
+input,
+button {
+  font-size: 1.1rem;
+}
+
+input {
+  color: var(--light-grayish-violet);
+  background: var(--white);
+  padding: 0.6rem;
+  border: 1px solid var(--light-grayish-violet);
+  border-radius: 5px;
+  letter-spacing: 1px;
+}
+
+.larger-input {
+  width: 20rem;
+}
+
+.small-input {
+  width: 7rem;
+}
+
+.date-input {
+  width: 4rem;
+}
+
+.submit-button {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 0.8rem;
+  margin-top: 2.5rem;
+  background-color: var(--very-dark-violet);
+  color: var(--white);
+  cursor: pointer;
+}
