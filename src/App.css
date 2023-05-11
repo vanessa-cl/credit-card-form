@@ -1,7 +1,8 @@
 main {
-  background-color: var(--dark-grayish-violet);
+  background-image: url("./assets/images/bg-main-desktop.png");
+  background-repeat: repeat-y;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }

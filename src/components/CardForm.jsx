@@ -30,10 +30,10 @@ export default function CardForm() {
           required
         />
       </div>
-      <div className="flex justify-content-between">
+      <div className="flex justify-content-start gap-3">
         <div>
           <label className="inline-flex form-label" id="expire-date">
-            EXP. DATE(MM/YY)
+            EXP. DATE (MM/YY)
           </label>
           <div className="flex justify-content-between gap-3">
             <InputNumber

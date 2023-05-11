@@ -16,14 +16,15 @@ input {
   border: 1px solid var(--light-grayish-violet);
   border-radius: 5px;
   letter-spacing: 1px;
+  margin-bottom: 0.8rem;
 }
 
 .larger-input {
-  width: 20rem;
+  width: 22rem;
 }
 
 .small-input {
-  width: 7rem;
+  width: 9.5rem;
 }
 
 .date-input {
@@ -35,7 +36,7 @@ input {
   border: none;
   border-radius: 5px;
   padding: 0.8rem;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   background-color: var(--very-dark-violet);
   color: var(--white);
   cursor: pointer;
