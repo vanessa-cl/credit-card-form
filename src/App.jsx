@@ -1,14 +1,12 @@
 import "./App.css";
 import "/node_modules/primeflex/primeflex.css";
-import CardForm from "./components/CardForm";
-import CardDetails from "./components/CardDetails";
+import Main from "./pages/Main";
 
 function App() {
   return (
-    <main>
-      <CardDetails />
-      <CardForm />
-    </main>
+    <div className="app-container">
+      <Main />
+    </div>
   );
 }
 

@@ -1,8 +1,8 @@
-main {
+.app-container {
   background-image: url("./assets/images/bg-main-desktop.png");
   background-repeat: repeat-y;
   height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }

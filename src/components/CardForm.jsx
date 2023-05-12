@@ -3,7 +3,7 @@ import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 import "./styles/CardForm.css";
 
-export default function CardForm() {
+export default function CardForm({ formValues, setFormValues }) {
   return (
     <form>
       <div className="flex flex-column">
@@ -15,6 +15,11 @@ export default function CardForm() {
           title="Cardholder name"
           className="larger-input"
           placeholder="e.g. Jane Appleseed"
+          value={formValues.cardName}
+          onChange={(event) =>
+            setFormValues({ ...formValues, cardName: event.target.value })
+          }
+          autoFocus
           required
         />
       </div>
@@ -27,6 +32,10 @@ export default function CardForm() {
           title="Card number"
           className="larger-input"
           placeholder="e.g 1234 5678 9123 0000"
+          value={formValues.cardNumber}
+          onChange={(event) =>
+            setFormValues({ ...formValues, cardNumber: event.target.value })
+          }
           required
         />
       </div>
@@ -42,6 +51,13 @@ export default function CardForm() {
               inputClassName="date-input"
               aria-labelledby="expire-date"
               placeholder="MM"
+              value={formValues.expireDate.month}
+              onChange={(event) =>
+                setFormValues({
+                  ...formValues,
+                  expireDate: { ...formValues.expireDate, month: event.value },
+                })
+              }
               required
             />
             <InputNumber
@@ -50,6 +66,13 @@ export default function CardForm() {
               inputClassName="date-input"
               aria-labelledby="expire-date"
               placeholder="YY"
+              value={formValues.expireDate.year}
+              onChange={(event) =>
+                setFormValues({
+                  ...formValues,
+                  expireDate: { ...formValues.expireDate, year: event.value },
+                })
+              }
               required
             />
           </div>
@@ -63,6 +86,10 @@ export default function CardForm() {
             title="CVC"
             inputClassName="small-input"
             placeholder="e.g 123"
+            value={formValues.cvc}
+            onChange={(event) =>
+              setFormValues({ ...formValues, cvc: event.target.value })
+            }
             required
           />
         </div>
