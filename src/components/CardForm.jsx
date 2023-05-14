@@ -14,10 +14,11 @@ const INITIAL_ERRORS_STATE = {
 };
 
 export default function CardForm({ formValues, setFormValues }) {
-  const { setErrorMessages } = useForm();
+  const { setErrorMessages, formatCardNumber } = useForm();
   const [formErrors, setFormErrors] = useState(INITIAL_ERRORS_STATE);
 
   const getValidationErrors = (validityState, field) => {
+    console.log(validityState);
     for (let key in validityState) {
       if (validityState[key]) {
         setFormErrors({ ...formErrors, [field]: key });
@@ -26,8 +27,10 @@ export default function CardForm({ formValues, setFormValues }) {
   };
 
   const getInvalidFieldStyle = (field) => {
-    return formErrors[field] !== "valid" ? "invalid-field" : ""
-  }
+    return formErrors[field] !== "valid" && formErrors[field] !== ""
+      ? "invalid-field"
+      : "";
+  };
 
   return (
     <form>
@@ -68,6 +71,15 @@ export default function CardForm({ formValues, setFormValues }) {
             getValidationErrors(event.target.validity, "cardNumber");
             setFormValues({ ...formValues, cardNumber: event.target.value });
           }}
+          onBlur={(event) =>
+            setFormValues({
+              ...formValues,
+              cardNumber: formatCardNumber(event.target.value),
+            })
+          }
+          pattern="[0-9 ]+"
+          minLength={16}
+          keyfilter="alphanum"
           required
         />
         <ErrorMessage message={setErrorMessages(formErrors.cardNumber)} />
@@ -82,7 +94,9 @@ export default function CardForm({ formValues, setFormValues }) {
               id="expire-month"
               title="Expire month"
               className={`${getInvalidFieldStyle("expireDate")}`}
-              inputClassName={`date-input ${getInvalidFieldStyle("expireDate")}`}
+              inputClassName={`date-input ${getInvalidFieldStyle(
+                "expireDate"
+              )}`}
               aria-labelledby="expire-date"
               placeholder="MM"
               value={formValues.expireDate.month}
@@ -101,7 +115,9 @@ export default function CardForm({ formValues, setFormValues }) {
             <InputNumber
               id="expire-year"
               title="Expire year"
-              inputClassName={`date-input ${getInvalidFieldStyle("expireDate")}`}
+              inputClassName={`date-input ${getInvalidFieldStyle(
+                "expireDate"
+              )}`}
               aria-labelledby="expire-date"
               placeholder="YY"
               value={formValues.expireDate.year}
