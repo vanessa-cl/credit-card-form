@@ -20,7 +20,7 @@
   margin-top: 2rem;
 }
 
-p {
+.card-details {
   color: var(--white);
   letter-spacing: 3px;
 }
