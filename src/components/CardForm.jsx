@@ -25,6 +25,10 @@ export default function CardForm({ formValues, setFormValues }) {
     }
   };
 
+  const getInvalidFieldStyle = (field) => {
+    return formErrors[field] !== "valid" ? "invalid-field" : ""
+  }
+
   return (
     <form>
       {console.log(formErrors)}
@@ -35,7 +39,7 @@ export default function CardForm({ formValues, setFormValues }) {
         <InputText
           id="cardholder-name"
           title="Cardholder name"
-          className="larger-input"
+          className={`larger-input ${getInvalidFieldStyle("cardName")}`}
           placeholder="e.g. Jane Appleseed"
           value={formValues.cardName}
           onChange={(event) => {
@@ -57,7 +61,7 @@ export default function CardForm({ formValues, setFormValues }) {
         <InputText
           id="card-number"
           title="Card number"
-          className="larger-input"
+          className={`larger-input ${getInvalidFieldStyle("cardNumber")}`}
           placeholder="e.g 1234 5678 9123 0000"
           value={formValues.cardNumber}
           onChange={(event) => {
@@ -77,7 +81,8 @@ export default function CardForm({ formValues, setFormValues }) {
             <InputNumber
               id="expire-month"
               title="Expire month"
-              inputClassName="date-input"
+              className={`${getInvalidFieldStyle("expireDate")}`}
+              inputClassName={`date-input ${getInvalidFieldStyle("expireDate")}`}
               aria-labelledby="expire-date"
               placeholder="MM"
               value={formValues.expireDate.month}
@@ -96,7 +101,7 @@ export default function CardForm({ formValues, setFormValues }) {
             <InputNumber
               id="expire-year"
               title="Expire year"
-              inputClassName="date-input"
+              inputClassName={`date-input ${getInvalidFieldStyle("expireDate")}`}
               aria-labelledby="expire-date"
               placeholder="YY"
               value={formValues.expireDate.year}
@@ -122,7 +127,7 @@ export default function CardForm({ formValues, setFormValues }) {
           <InputNumber
             id="cvc"
             title="CVC"
-            inputClassName="small-input"
+            inputClassName={`small-input ${getInvalidFieldStyle("cvc")}`}
             placeholder="e.g 123"
             value={formValues.cvc}
             onChange={(event) => {

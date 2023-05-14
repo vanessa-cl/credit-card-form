@@ -41,3 +41,7 @@ input {
   color: var(--white);
   cursor: pointer;
 }
+
+.invalid-field {
+  border-color: var(--red);
+}
