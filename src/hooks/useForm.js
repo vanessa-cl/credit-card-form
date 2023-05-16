@@ -8,12 +8,19 @@ export default function useForm() {
     return message[error];
   };
 
-  const formatCardNumber = (value) => {
-    if (value.length === 16) {
+  const formatCardNumber = (value, validityState) => {
+    const checkForSpaces = /\s/g;
+
+    if (validityState === "valid" && !checkForSpaces.test(value)) {
       const filterSpace = value.match(/.{1,4}/g);
       return filterSpace.join(" ");
     }
-    return value;
+
+    if (checkForSpaces.test(value)) {
+      return value;
+    }
+
+    return value.replace(/ /g, "");
   };
 
   return { setErrorMessages, formatCardNumber };

@@ -18,7 +18,7 @@ export default function CardForm({ formValues, setFormValues }) {
   const [formErrors, setFormErrors] = useState(INITIAL_ERRORS_STATE);
 
   const getValidationErrors = (validityState, field) => {
-    console.log(validityState);
+    // console.log(validityState);
     for (let key in validityState) {
       if (validityState[key]) {
         setFormErrors({ ...formErrors, [field]: key });
@@ -34,7 +34,7 @@ export default function CardForm({ formValues, setFormValues }) {
 
   return (
     <form>
-      {console.log(formErrors)}
+      {/* {console.log(formErrors)} */}
       <div className="flex flex-column">
         <label className="form-label" htmlFor="cardholder-name">
           CARDHOLDER NAME
@@ -68,17 +68,25 @@ export default function CardForm({ formValues, setFormValues }) {
           placeholder="e.g 1234 5678 9123 0000"
           value={formValues.cardNumber}
           onChange={(event) => {
-            getValidationErrors(event.target.validity, "cardNumber");
-            setFormValues({ ...formValues, cardNumber: event.target.value });
-          }}
-          onBlur={(event) =>
             setFormValues({
               ...formValues,
-              cardNumber: formatCardNumber(event.target.value),
-            })
-          }
+              cardNumber: event.target.value.replace(/ /g, ""),
+            });
+            getValidationErrors(event.target.validity, "cardNumber");
+          }}
+          onBlur={(event) => {
+            getValidationErrors(event.target.validity, "cardNumber");
+            setFormValues({
+              ...formValues,
+              cardNumber: formatCardNumber(
+                event.target.value,
+                formErrors.cardNumber
+              ),
+            });
+          }}
           pattern="[0-9 ]+"
           minLength={16}
+          maxLength={16}
           keyfilter="alphanum"
           required
         />
