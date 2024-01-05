@@ -13,6 +13,8 @@ const INITIAL_ERRORS_STATE = {
   cvc: "",
 };
 
+// const actualYear = Number(new Date().getFullYear().toString().substring(2));
+
 export default function CardForm({ formValues, setFormValues }) {
   const { setErrorMessages, formatCardNumber } = useForm();
   const [formErrors, setFormErrors] = useState(INITIAL_ERRORS_STATE);
@@ -34,7 +36,8 @@ export default function CardForm({ formValues, setFormValues }) {
 
   return (
     <form>
-      {/* {console.log(formErrors)} */}
+      {console.log(formErrors)}
+      {/* {console.log(teste)} */}
       <div className="flex flex-column">
         <label className="form-label" htmlFor="cardholder-name">
           CARDHOLDER NAME
@@ -46,7 +49,7 @@ export default function CardForm({ formValues, setFormValues }) {
           placeholder="e.g. Jane Appleseed"
           value={formValues.cardName}
           onChange={(event) => {
-            // console.log(event.target.checkValidity())
+            console.log(event.target.validity)
             getValidationErrors(event.target.validity, "cardName");
             setFormValues({ ...formValues, cardName: event.target.value });
           }}
@@ -113,11 +116,16 @@ export default function CardForm({ formValues, setFormValues }) {
                   event.originalEvent.target.validity,
                   "expireDate"
                 );
+              }}
+              onValueChange={(event) => {
                 setFormValues({
                   ...formValues,
                   expireDate: { ...formValues.expireDate, month: event.value },
                 });
               }}
+              min={1}
+              max={12}
+              useGrouping={false}
               required
             />
             <InputNumber
@@ -134,11 +142,15 @@ export default function CardForm({ formValues, setFormValues }) {
                   event.originalEvent.target.validity,
                   "expireDate"
                 );
+              }}
+              onValueChange={(event) => {
                 setFormValues({
                   ...formValues,
                   expireDate: { ...formValues.expireDate, year: event.value },
                 });
               }}
+              // min={actualYear}
+              useGrouping={false}
               required
             />
           </div>
