@@ -19,6 +19,10 @@ input {
   margin-bottom: 0.8rem;
 }
 
+input:focus {
+  border-color: var(--red);
+}
+
 .larger-input {
   width: 22rem;
 }
@@ -44,4 +48,15 @@ input {
 
 .invalid-field {
   border-color: var(--red);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
 }
