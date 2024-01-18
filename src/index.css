@@ -25,7 +25,7 @@
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+  box-sizing: border-box;
   margin: 0;
 }
 
@@ -33,4 +33,5 @@ html,
 body,
 #root {
   height: 100%;
+  text-rendering: optimizelegibility;
 }

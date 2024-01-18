@@ -1,7 +1,24 @@
 .form-label {
   font-size: 1rem;
   color: var(--very-dark-violet);
-  margin: 1rem 0;
+  margin-bottom: 0.7rem;
+}
+
+.form-row,
+.input-container,
+.submit-button,
+input {
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+form {
+  width: 35%;
 }
 
 input,
@@ -9,34 +26,32 @@ button {
   font-size: 1.1rem;
 }
 
+.input-container {
+  display: block;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 1px;
+}
+
+.input-container:focus-within,
+.input-container:hover {
+  background: var(--linear-gradient);
+}
+
 input {
-  color: var(--light-grayish-violet);
   background: var(--white);
-  padding: 0.6rem;
   border: 1px solid var(--light-grayish-violet);
-  border-radius: 5px;
-  letter-spacing: 1px;
-  margin-bottom: 0.8rem;
+  border-radius: 8px;
+  letter-spacing: 0.8px;
+  padding: 12px;
+  outline: none;
 }
 
-input:focus {
-  border-color: var(--red);
-}
-
-.larger-input {
-  width: 22rem;
-}
-
-.small-input {
-  width: 9.5rem;
-}
-
-.date-input {
-  width: 4rem;
+input::placeholder {
+  color: var(--dark-grayish-violet);
 }
 
 .submit-button {
-  width: 100%;
   border: none;
   border-radius: 5px;
   padding: 0.8rem;
@@ -47,7 +62,7 @@ input:focus {
 }
 
 .invalid-field {
-  border-color: var(--red);
+  background: var(--red);
 }
 
 input[type="number"]::-webkit-inner-spin-button,
