@@ -6,7 +6,8 @@ import ErrorMessage from "./ErrorMessage";
 const INITIAL_ERRORS_STATE = {
   cardNumber: "",
   cardName: "",
-  expireDate: "",
+  month: "",
+  year: "",
   cvc: "",
 };
 
@@ -18,6 +19,7 @@ export default function CardForm({ formValues, setFormValues }) {
     formatCardNumber,
     checkMinCardNumberLength,
     getInvalidFieldStyle,
+    shouldSetDateErrors
   } = useForm();
   const [formErrors, setFormErrors] = useState(INITIAL_ERRORS_STATE);
 
@@ -31,68 +33,76 @@ export default function CardForm({ formValues, setFormValues }) {
 
   return (
     <form>
-      <div className="flex flex-column">
+      <div className="form-row">
         <label className="form-label" htmlFor="cardholder-name">
           CARDHOLDER NAME
         </label>
-        <input
-          id="cardholder-name"
-          title="Cardholder name"
-          type="text"
-          className={`larger-input ${getInvalidFieldStyle(
+        <div
+          className={`input-container ${getInvalidFieldStyle(
             formErrors,
             "cardName"
           )}`}
-          placeholder="e.g. Jane Appleseed"
-          minLength={3}
-          maxLength={25}
-          autoFocus
-          required
-          value={formValues.cardName}
-          onChange={(event) => {
-            getValidationErrors(event.target.validity, "cardName");
-            setFormValues({ ...formValues, cardName: event.target.value });
-          }}
-          onBlur={(event) => {
-            getValidationErrors(event.target.validity, "cardName");
-          }}
-        />
+        >
+          <input
+            id="cardholder-name"
+            title="Cardholder name"
+            type="text"
+            className="larger-input"
+            placeholder="e.g. Jane Appleseed"
+            minLength={3}
+            maxLength={25}
+            autoFocus
+            required
+            value={formValues.cardName}
+            onChange={(event) => {
+              getValidationErrors(event.target.validity, "cardName");
+              setFormValues({ ...formValues, cardName: event.target.value });
+            }}
+            onBlur={(event) => {
+              getValidationErrors(event.target.validity, "cardName");
+            }}
+          />
+        </div>
         <ErrorMessage message={setErrorMessages(formErrors.cardName)} />
       </div>
-      <div className="flex flex-column">
+      <div className="form-row">
         <label className="form-label" htmlFor="card-number">
           CARD NUMBER
         </label>
-        <input
-          id="card-number"
-          title="Card number"
-          className={`larger-input ${getInvalidFieldStyle(
+        <div
+          className={`input-container ${getInvalidFieldStyle(
             formErrors,
             "cardNumber"
           )}`}
-          placeholder="e.g 1234 5678 9123 0000"
-          value={formValues.cardNumber}
-          onChange={(event) => {
-            setFormValues({
-              ...formValues,
-              cardNumber: formatCardNumber(event.target.value),
-            });
-            getValidationErrors(event.target.validity, "cardNumber");
-          }}
-          onBlur={(event) => {
-            if (checkMinCardNumberLength(event.target.value)) {
-              return getValidationErrors(
-                { ...event.target.validity, tooShort: true },
-                "cardNumber"
-              );
-            }
-            getValidationErrors(event.target.validity, "cardNumber");
-          }}
-          pattern="^[0-9\s]+$"
-          minLength={16}
-          maxLength={16}
-          required
-        />
+        >
+          <input
+            id="card-number"
+            title="Card number"
+            className="larger-input"
+            placeholder="e.g 1234 5678 9123 0000"
+            value={formValues.cardNumber}
+            onChange={(event) => {
+              setFormValues({
+                ...formValues,
+                cardNumber: formatCardNumber(event.target.value),
+              });
+              getValidationErrors(event.target.validity, "cardNumber");
+            }}
+            onBlur={(event) => {
+              if (checkMinCardNumberLength(event.target.value)) {
+                return getValidationErrors(
+                  { ...event.target.validity, tooShort: true },
+                  "cardNumber"
+                );
+              }
+              getValidationErrors(event.target.validity, "cardNumber");
+            }}
+            pattern="^[0-9\s]+$"
+            minLength={16}
+            maxLength={16}
+            required
+          />
+        </div>
         <ErrorMessage message={setErrorMessages(formErrors.cardNumber)} />
       </div>
       <div className="flex justify-content-start gap-3">
@@ -100,89 +110,99 @@ export default function CardForm({ formValues, setFormValues }) {
           <label className="inline-flex form-label" id="expire-date">
             EXP. DATE (MM/YY)
           </label>
-          <div
-            className="flex justify-content-between gap-3"
-            onBlur={(event) => {
-              getValidationErrors(event.target.validity, "expireDate");
-            }}
-          >
-            <input
-              id="expire-month"
-              title="Expire month"
-              type="number"
-              className={`date-input ${getInvalidFieldStyle(
+          <div className="flex justify-content-between gap-3">
+            <div
+              className={`input-container ${getInvalidFieldStyle(
                 formErrors,
-                "expireDate"
+                "month"
               )}`}
-              aria-labelledby="expire-date"
-              placeholder="MM"
-              value={formValues.expireDate.month}
-              onChange={(event) => {
-                console.log(event.target.validity);
-                setFormValues({
-                  ...formValues,
-                  expireDate: {
-                    ...formValues.expireDate,
+            >
+              <input
+                id="expire-month"
+                title="Expire month"
+                type="number"
+                className="date-input"
+                aria-labelledby="expire-date"
+                placeholder="MM"
+                value={formValues.month}
+                onChange={(event) => {
+                  getValidationErrors(event.target.validity, "month");
+                  setFormValues({
+                    ...formValues,
                     month: event.target.value,
-                  },
-                });
-                getValidationErrors(event.target.validity, "expireDate");
-              }}
-              min="1"
-              max="12"
-              required
-            />
-            <input
-              id="expire-year"
-              title="Expire year"
-              type="number"
-              className={`date-input ${getInvalidFieldStyle(
+                  });
+                }}
+                onBlur={(event) =>
+                  getValidationErrors(event.target.validity, "month")
+                }
+                min="1"
+                max="12"
+                required
+              />
+            </div>
+            <div
+              className={`input-container ${getInvalidFieldStyle(
                 formErrors,
-                "expireDate"
+                "year"
               )}`}
-              aria-labelledby="expire-date"
-              placeholder="YY"
-              value={formValues.expireDate.year}
-              onChange={(event) => {
-                console.log(event.target.validity);
-                setFormValues({
-                  ...formValues,
-                  expireDate: {
-                    ...formValues.expireDate,
+            >
+              <input
+                id="expire-year"
+                title="Expire year"
+                type="number"
+                className="date-input"
+                aria-labelledby="expire-date"
+                placeholder="YY"
+                value={formValues.year}
+                onChange={(event) => {
+                  getValidationErrors(event.target.validity, "year");
+                  setFormValues({
+                    ...formValues,
                     year: event.target.value,
-                  },
-                });
-                getValidationErrors(event.target.validity, "expireDate");
-              }}
-              min={actualYear}
-              max="99"
-              required
-            />
+                  });
+                }}
+                onBlur={(event) =>
+                  getValidationErrors(event.target.validity, "year")
+                }
+                min={actualYear}
+                max="99"
+                required
+              />
+            </div>
           </div>
-          <ErrorMessage message={setErrorMessages(formErrors.expireDate)} />
+          <ErrorMessage
+            message={setErrorMessages(shouldSetDateErrors(formErrors))}
+          />
         </div>
         <div className="flex flex-column">
           <label className="form-label" htmlFor="cvc">
             CVC
           </label>
-          <input
-            id="cvc"
-            title="CVC"
-            type="number"
-            className={`small-input ${getInvalidFieldStyle(formErrors, "cvc")}`}
-            placeholder="e.g 123"
-            value={formValues.cvc}
-            onChange={(event) => {
-              getValidationErrors(event.target.validity, "cvc");
-              setFormValues({ ...formValues, cvc: event.target.value });
-            }}
-            onBlur={(event) => {
-              getValidationErrors(event.target.validity, "cvc");
-            }}
-            required
-            min="001"
-            max="999"
-          />
+          <div
+            className={`input-container ${getInvalidFieldStyle(
+              formErrors,
+              "cvc"
+            )}`}
+          >
+            <input
+              id="cvc"
+              title="CVC"
+              type="number"
+              className="small-input"
+              placeholder="e.g 123"
+              value={formValues.cvc}
+              onChange={(event) => {
+                getValidationErrors(event.target.validity, "cvc");
+                setFormValues({ ...formValues, cvc: event.target.value });
+              }}
+              onBlur={(event) => {
+                getValidationErrors(event.target.validity, "cvc");
+              }}
+              required
+              min="001"
+              max="999"
+            />
+          </div>
           <ErrorMessage message={setErrorMessages(formErrors.cvc)} />
         </div>
       </div>

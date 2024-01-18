@@ -36,10 +36,15 @@ export default function useForm() {
     return /^\d{1,15}$/.test(value);
   };
 
+  const shouldSetDateErrors = (formErrors) => {
+    return formErrors.month === "valid" ? formErrors.year : formErrors.month;
+  };
+
   return {
     setErrorMessages,
     formatCardNumber,
     checkMinCardNumberLength,
     getInvalidFieldStyle,
+    shouldSetDateErrors,
   };
 }

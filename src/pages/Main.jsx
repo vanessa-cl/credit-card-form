@@ -5,20 +5,16 @@ import CardForm from "../components/CardForm";
 const INITIAL_FORM_STATE = {
   cardName: "",
   cardNumber: "",
-  expireDate: {
-    month: "",
-    year: "",
-  },
+  month: "",
+  year: "",
   cvc: "",
 };
 
 const INITIAL_DETAILS_STATE = {
   cardName: "Jane Appleseed",
   cardNumber: "0000 0000 0000 0000",
-  expireDate: {
-    month: "00",
-    year: "00",
-  },
+  month: "00",
+  year: "00",
   cvc: "000",
 };
 
@@ -27,8 +23,11 @@ export default function Main() {
 
   return (
     <main className="flex align-items-center justify-content-evenly w-full">
-      <CardDetails detailsValues={INITIAL_DETAILS_STATE} formValues={formValues} />
-      <CardForm formValues={formValues} setFormValues={setFormValues}/>
+      <CardDetails
+        detailsValues={INITIAL_DETAILS_STATE}
+        formValues={formValues}
+      />
+      <CardForm formValues={formValues} setFormValues={setFormValues} />
     </main>
   );
 }

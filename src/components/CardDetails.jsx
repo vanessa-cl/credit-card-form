@@ -3,12 +3,6 @@ import cardLogo from "../assets/images/card-logo.svg";
 
 export default function CardDetails({ detailsValues, formValues }) {
   const showValues = (field) => {
-    if (field === "month" || field === "year") {
-      return formValues.expireDate[field] === "" ||
-        formValues.expireDate[field] === null
-        ? detailsValues.expireDate[field]
-        : formValues.expireDate[field];
-    }
     return formValues[field] === "" || formValues[field] === null
       ? detailsValues[field]
       : formValues[field];
