@@ -2,6 +2,8 @@ import { useState } from "react";
 import "./styles/CardForm.css";
 import useForm from "../hooks/useForm";
 import ErrorMessage from "./ErrorMessage";
+import Button from "./ui/Button";
+import Input from "./ui/Input";
 
 const INITIAL_ERRORS_STATE = {
   cardNumber: "",
@@ -48,11 +50,11 @@ export default function CardForm({
             "cardName"
           )}`}
         >
-          <input
+          <Input
             id="cardholder-name"
             title="Cardholder name"
             type="text"
-            className="larger-input"
+            className="form-input"
             placeholder="e.g. Jane Appleseed"
             minLength={3}
             maxLength={25}
@@ -80,10 +82,10 @@ export default function CardForm({
             "cardNumber"
           )}`}
         >
-          <input
+          <Input
             id="card-number"
             title="Card number"
-            className="larger-input"
+            className="form-input"
             placeholder="e.g 1234 5678 9123 0000"
             value={formValues.cardNumber}
             onChange={(event) => {
@@ -122,11 +124,11 @@ export default function CardForm({
                 "month"
               )}`}
             >
-              <input
+              <Input
                 id="expire-month"
                 title="Expire month"
                 type="number"
-                className="date-input"
+                className="form-input"
                 aria-labelledby="expire-date"
                 placeholder="MM"
                 value={formValues.month}
@@ -151,11 +153,11 @@ export default function CardForm({
                 "year"
               )}`}
             >
-              <input
+              <Input
                 id="expire-year"
                 title="Expire year"
                 type="number"
-                className="date-input"
+                className="form-input"
                 aria-labelledby="expire-date"
                 placeholder="YY"
                 value={formValues.year}
@@ -189,11 +191,11 @@ export default function CardForm({
               "cvc"
             )}`}
           >
-            <input
+            <Input
               id="cvc"
               title="CVC"
               type="number"
-              className="small-input"
+              className="form-input"
               placeholder="e.g 123"
               value={formValues.cvc}
               onChange={(event) => {
@@ -212,18 +214,17 @@ export default function CardForm({
         </div>
       </div>
       <div className="flex justify-content-center">
-        <button
+        <Button
           id="submit-button"
+          name="Confirm"
           type="submit"
           className="submit-button"
           disabled={shouldDisableSubmit(formErrors)}
-          onClick={(event) => {
-            event.preventDefault();
+          onClick={() => {
             setIsFormCompleted(true);
           }}
-        >
-          Confirm
-        </button>
+          label="Confirm"
+        />
         {console.log(formErrors)}
       </div>
     </form>
