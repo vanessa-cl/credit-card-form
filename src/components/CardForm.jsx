@@ -13,8 +13,6 @@ const INITIAL_ERRORS_STATE = {
   cvc: "",
 };
 
-const actualYear = Number(new Date().getFullYear() % 100);
-
 export default function CardForm({
   formValues,
   setFormValues,
@@ -27,6 +25,7 @@ export default function CardForm({
     getInvalidFieldStyle,
     shouldSetDateErrors,
     shouldDisableSubmit,
+    actualYear,
   } = useForm();
   const [formErrors, setFormErrors] = useState(INITIAL_ERRORS_STATE);
 
@@ -225,7 +224,6 @@ export default function CardForm({
           }}
           label="Confirm"
         />
-        {console.log(formErrors)}
       </div>
     </form>
   );
