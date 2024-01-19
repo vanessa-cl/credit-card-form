@@ -13,7 +13,11 @@ const INITIAL_ERRORS_STATE = {
 
 const actualYear = Number(new Date().getFullYear() % 100);
 
-export default function CardForm({ formValues, setFormValues }) {
+export default function CardForm({
+  formValues,
+  setFormValues,
+  setIsFormCompleted,
+}) {
   const {
     setErrorMessages,
     formatCardNumber,
@@ -213,7 +217,10 @@ export default function CardForm({ formValues, setFormValues }) {
           type="submit"
           className="submit-button"
           disabled={shouldDisableSubmit(formErrors)}
-          onClick={() => console.log("ok")}
+          onClick={(event) => {
+            event.preventDefault();
+            setIsFormCompleted(true);
+          }}
         >
           Confirm
         </button>

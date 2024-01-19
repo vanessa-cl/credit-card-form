@@ -1,25 +1,12 @@
 import { useState } from "react";
 import CardDetails from "../components/CardDetails";
 import CardForm from "../components/CardForm";
-
-const INITIAL_FORM_STATE = {
-  cardName: "",
-  cardNumber: "",
-  month: "",
-  year: "",
-  cvc: "",
-};
-
-const INITIAL_DETAILS_STATE = {
-  cardName: "Jane Appleseed",
-  cardNumber: "0000 0000 0000 0000",
-  month: "00",
-  year: "00",
-  cvc: "000",
-};
+import CompletedSubmit from "../components/CompletedSubmit";
+import { INITIAL_FORM_STATE, INITIAL_DETAILS_STATE } from "../consts/formState";
 
 export default function Main() {
   const [formValues, setFormValues] = useState(INITIAL_FORM_STATE);
+  const [isFormCompleted, setIsFormCompleted] = useState(false);
 
   return (
     <main className="flex align-items-center justify-content-evenly w-full">
@@ -27,7 +14,15 @@ export default function Main() {
         detailsValues={INITIAL_DETAILS_STATE}
         formValues={formValues}
       />
-      <CardForm formValues={formValues} setFormValues={setFormValues} />
+      {isFormCompleted ? (
+        <CompletedSubmit setIsFormCompleted={setIsFormCompleted} setFormValues={setFormValues}/>
+      ) : (
+        <CardForm
+          formValues={formValues}
+          setFormValues={setFormValues}
+          setIsFormCompleted={setIsFormCompleted}
+        />
+      )}
     </main>
   );
 }
