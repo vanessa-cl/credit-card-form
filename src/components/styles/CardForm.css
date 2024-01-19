@@ -53,12 +53,27 @@ input::placeholder {
 
 .submit-button {
   border: none;
-  border-radius: 5px;
-  padding: 0.8rem;
+  border-radius: 8px;
+  padding: 1.2rem;
   margin-top: 2rem;
   background-color: var(--very-dark-violet);
   color: var(--white);
   cursor: pointer;
+  letter-spacing: 2px;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: var(--linear-gradient);
+}
+
+.submit-button:disabled {
+  background-color: var(--light-grayish-violet);
+  cursor: not-allowed;
+}
+
+.submit-button:disabled:hover {
+  background-color: var(--dark-grayish-violet);
+  cursor: not-allowed;
 }
 
 .invalid-field {
