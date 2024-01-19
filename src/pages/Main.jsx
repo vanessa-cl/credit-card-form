@@ -15,7 +15,10 @@ export default function Main() {
         formValues={formValues}
       />
       {isFormCompleted ? (
-        <CompletedSubmit setIsFormCompleted={setIsFormCompleted} setFormValues={setFormValues}/>
+        <CompletedSubmit
+          setIsFormCompleted={setIsFormCompleted}
+          setFormValues={setFormValues}
+        />
       ) : (
         <CardForm
           formValues={formValues}

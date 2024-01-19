@@ -1,0 +1,26 @@
+.confirm-section {
+  width: 35%;
+  height: 20rem;
+}
+
+.confirm-section,
+.confirm-message-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 2rem;
+  color: var(--very-dark-violet);
+  letter-spacing: 5px;
+  font-weight: 400;
+}
+
+.confirm-message {
+  color: var(--dark-grayish-violet);
+  letter-spacing: 1px;
+  margin-top: 1rem;
+}

@@ -1,21 +1,24 @@
 import iconComplete from "../assets/images/icon-complete.svg";
 import { INITIAL_FORM_STATE } from "../consts/formState";
+import "./styles/CompletedSubmit.css";
+import Button from "./ui/Button";
 
 export default function CompletedSubmit({ setIsFormCompleted, setFormValues }) {
   return (
-    <section>
+    <section className="confirm-section">
       <img src={iconComplete} alt="checkmark" />
-      <h1>Thank you!</h1>
-      <p>We&apos;ve added your card details</p>
-      <button
+      <div className="confirm-message-wrapper">
+        <h1>Thank you!</h1>
+        <p className="confirm-message">We&apos;ve added your card details</p>
+      </div>
+      <Button
         className="submit-button"
         onClick={() => {
           setFormValues(INITIAL_FORM_STATE);
           setIsFormCompleted(false);
         }}
-      >
-        Continue
-      </button>
+        label="Continue"
+      />
     </section>
   );
 }
