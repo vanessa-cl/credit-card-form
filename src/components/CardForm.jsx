@@ -19,7 +19,8 @@ export default function CardForm({ formValues, setFormValues }) {
     formatCardNumber,
     checkMinCardNumberLength,
     getInvalidFieldStyle,
-    shouldSetDateErrors
+    shouldSetDateErrors,
+    shouldDisableSubmit,
   } = useForm();
   const [formErrors, setFormErrors] = useState(INITIAL_ERRORS_STATE);
 
@@ -207,12 +208,16 @@ export default function CardForm({ formValues, setFormValues }) {
         </div>
       </div>
       <div className="flex justify-content-center">
-        {/* <Button
+        <button
           id="submit-button"
           type="submit"
           className="submit-button"
-          label="Confirm"
-        /> */}
+          disabled={shouldDisableSubmit(formErrors)}
+          onClick={() => console.log("ok")}
+        >
+          Confirm
+        </button>
+        {console.log(formErrors)}
       </div>
     </form>
   );

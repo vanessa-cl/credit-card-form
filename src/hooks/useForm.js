@@ -36,8 +36,17 @@ export default function useForm() {
     return /^\d{1,15}$/.test(value);
   };
 
+  const actualYear = Number(new Date().getFullYear() % 100);
+
   const shouldSetDateErrors = (formErrors) => {
     return formErrors.month === "valid" ? formErrors.year : formErrors.month;
+  };
+
+  const shouldDisableSubmit = (formErrors) => {
+    return (
+      Object.values(formErrors).filter((item) => item === "valid").length <
+      Object.keys(formErrors).length
+    );
   };
 
   return {
@@ -46,5 +55,7 @@ export default function useForm() {
     checkMinCardNumberLength,
     getInvalidFieldStyle,
     shouldSetDateErrors,
+    shouldDisableSubmit,
+    actualYear,
   };
 }
