@@ -12,6 +12,8 @@ export default function CompletedSubmit({ setIsFormCompleted, setFormValues }) {
         <p className="confirm-message">We&apos;ve added your card details</p>
       </div>
       <Button
+        id="continue-button"
+        name="Continue"
         className="submit-button"
         onClick={() => {
           setFormValues(INITIAL_FORM_STATE);

@@ -1,10 +1,9 @@
 import "./styles/ErrorMessage.css";
 
-export default function ErrorMessage({ message }) {
+export default function ErrorMessage({ id, message }) {
   return (
-    <div>
-      {/* {console.log(message)} */}
-      <p className="message">{message}</p>
-    </div>
+    <p id={id} role="alert" aria-live="polite" className="message">
+      {message}
+    </p>
   );
 }

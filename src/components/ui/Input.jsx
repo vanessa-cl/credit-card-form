@@ -6,6 +6,7 @@ export default function Input(props) {
       id={props.id}
       title={props.title}
       type={props.type}
+      aria-describedby={props["aria-describedby"]}
       aria-labelledby={props["aria-labelledby"]}
       className={props.className}
       placeholder={props.placeholder}

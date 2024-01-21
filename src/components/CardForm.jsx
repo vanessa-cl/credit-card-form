@@ -52,6 +52,7 @@ export default function CardForm({
           <Input
             id="cardholder-name"
             title="Cardholder name"
+            aria-describedby="error-cardholder-name"
             type="text"
             className="form-input"
             placeholder="e.g. Jane Appleseed"
@@ -69,7 +70,10 @@ export default function CardForm({
             }}
           />
         </div>
-        <ErrorMessage message={setErrorMessages(formErrors.cardName)} />
+        <ErrorMessage
+          id="error-cardholder-name"
+          message={setErrorMessages(formErrors.cardName)}
+        />
       </div>
       <div className="form-row">
         <label className="form-label" htmlFor="card-number">
@@ -84,6 +88,7 @@ export default function CardForm({
           <Input
             id="card-number"
             title="Card number"
+            aria-describedby="error-card-number"
             className="form-input"
             placeholder="e.g 1234 5678 9123 0000"
             value={formValues.cardNumber}
@@ -109,7 +114,10 @@ export default function CardForm({
             required
           />
         </div>
-        <ErrorMessage message={setErrorMessages(formErrors.cardNumber)} />
+        <ErrorMessage
+          id="error-card-number"
+          message={setErrorMessages(formErrors.cardNumber)}
+        />
       </div>
       <div className="flex justify-content-start gap-3">
         <div>
@@ -126,6 +134,7 @@ export default function CardForm({
               <Input
                 id="expire-month"
                 title="Expire month"
+                aria-describedby="error-expire-date"
                 type="number"
                 className="form-input"
                 aria-labelledby="expire-date"
@@ -155,6 +164,7 @@ export default function CardForm({
               <Input
                 id="expire-year"
                 title="Expire year"
+                aria-describedby="error-expire-date"
                 type="number"
                 className="form-input"
                 aria-labelledby="expire-date"
@@ -177,6 +187,7 @@ export default function CardForm({
             </div>
           </div>
           <ErrorMessage
+            id="error-expire-date"
             message={setErrorMessages(shouldSetDateErrors(formErrors))}
           />
         </div>
@@ -193,6 +204,7 @@ export default function CardForm({
             <Input
               id="cvc"
               title="CVC"
+              aria-describedby="error-cvc"
               type="number"
               className="form-input"
               placeholder="e.g 123"
@@ -209,7 +221,10 @@ export default function CardForm({
               max="999"
             />
           </div>
-          <ErrorMessage message={setErrorMessages(formErrors.cvc)} />
+          <ErrorMessage
+            id="error-cvc"
+            message={setErrorMessages(formErrors.cvc)}
+          />
         </div>
       </div>
       <div className="flex justify-content-center">
