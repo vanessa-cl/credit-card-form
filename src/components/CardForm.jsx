@@ -38,7 +38,7 @@ export default function CardForm({
   };
 
   return (
-    <form>
+    <form className="card-form">
       <div className="form-row">
         <label className="form-label" htmlFor="cardholder-name">
           CARDHOLDER NAME
@@ -119,12 +119,12 @@ export default function CardForm({
           message={setErrorMessages(formErrors.cardNumber)}
         />
       </div>
-      <div className="flex justify-content-start gap-3">
-        <div>
-          <label className="inline-flex form-label" id="expire-date">
+      <div className="form-last-row">
+        <div className="form-date-row">
+          <label className="form-label" id="expire-date">
             EXP. DATE (MM/YY)
           </label>
-          <div className="flex justify-content-between gap-3">
+          <div className="form-last-row">
             <div
               className={`input-container ${getInvalidFieldStyle(
                 formErrors,
@@ -191,7 +191,7 @@ export default function CardForm({
             message={setErrorMessages(shouldSetDateErrors(formErrors))}
           />
         </div>
-        <div className="flex flex-column">
+        <div className="form-row">
           <label className="form-label" htmlFor="cvc">
             CVC
           </label>
@@ -227,7 +227,7 @@ export default function CardForm({
           />
         </div>
       </div>
-      <div className="flex justify-content-center">
+      <div>
         <Button
           id="submit-button"
           name="Confirm"

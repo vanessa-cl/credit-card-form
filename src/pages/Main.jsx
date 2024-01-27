@@ -9,7 +9,7 @@ export default function Main() {
   const [isFormCompleted, setIsFormCompleted] = useState(false);
 
   return (
-    <main className="flex align-items-center justify-content-evenly w-full">
+    <main>
       <CardDetails
         detailsValues={INITIAL_DETAILS_STATE}
         formValues={formValues}

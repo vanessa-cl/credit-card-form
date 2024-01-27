@@ -1,5 +1,7 @@
 import "./styles/CardDetails.css";
 import cardLogo from "../assets/images/card-logo.svg";
+import cardFront from "./../assets/images/bg-card-front.png";
+import cardBack from "./../assets/images/bg-card-back.png";
 
 export default function CardDetails({ detailsValues, formValues }) {
   const showValues = (field) => {
@@ -9,24 +11,36 @@ export default function CardDetails({ detailsValues, formValues }) {
   };
 
   return (
-    <div className="card-details-container">
-      <div className="card-details-front">
-        <div className="flex flex-column px-5">
-          <img className="card-logo" src={cardLogo} alt="card-logo" />
-          <p className="card-number card-details">{showValues("cardNumber")}</p>
-          <div className="card-info flex justify-content-between">
-            <p className="card-details">
-              {showValues("cardName").toUpperCase()}
-            </p>
-            <p className="card-details">
-              {showValues("month")}/{showValues("year")}
-            </p>
+    <div className="card-details">
+      <div className="card-front">
+        <img
+          className="card-front-image"
+          alt="card-front"
+          src={cardFront}
+        />
+        <div className="details-front">
+          <div>
+            <img className="card-logo" src={cardLogo} alt="card-logo" />
+          </div>
+          <div>
+            <p className="card-number">{showValues("cardNumber")}</p>
+            <div className="card-info">
+              <p>{showValues("cardName").toUpperCase()}</p>
+              <p>
+                {showValues("month")}/{showValues("year")}
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <div className="card-details-back">
-        <div className="flex justify-content-end">
-          <p className="card-cvc card-details">{showValues("cvc")}</p>
+      <div className="card-back">
+        <img
+          className="card-back-image"
+          alt="card-back"
+          src={cardBack}
+        />
+        <div className="details-back">
+          <p className="card-cvc">{showValues("cvc")}</p>
         </div>
       </div>
     </div>

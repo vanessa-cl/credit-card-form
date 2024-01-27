@@ -1,24 +1,23 @@
 button {
   border: none;
-  border-radius: 8px;
-  padding: 1.2rem;
-  margin-top: 2rem;
+  padding: 16px;
   background-color: var(--very-dark-violet);
   color: var(--white);
   cursor: pointer;
-  letter-spacing: 2px;
 }
 
 input,
 button {
-  font-size: 1.1rem;
+  font-size: 18px;
+  border-radius: 8px;
+  letter-spacing: 1px;
 }
 
 input {
   background: var(--white);
   border: 1px solid var(--light-grayish-violet);
   border-radius: 8px;
-  letter-spacing: 0.8px;
+  letter-spacing: 1px;
   padding: 12px;
   outline: none;
 }
@@ -30,7 +29,6 @@ input::placeholder {
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
-  margin: 0;
 }
 
 input[type="number"] {

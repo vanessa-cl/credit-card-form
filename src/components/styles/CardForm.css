@@ -1,7 +1,7 @@
 .form-label {
-  font-size: 1rem;
+  font-size: 14px;
   color: var(--very-dark-violet);
-  margin-bottom: 0.7rem;
+  margin-bottom: 12px;
 }
 
 .form-row,
@@ -11,14 +11,28 @@
   width: 100%;
 }
 
-.form-row {
+.form-row,
+.form-last-row,
+.form-date-row {
   display: flex;
-  flex-direction: column;
-  margin-bottom: 1.5rem;
 }
 
-form {
-  width: 35%;
+.form-row,
+.form-date-row {
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.form-last-row {
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-form {
+  width: 100%;
+  padding: 24px;
+  margin-top: 20px;
 }
 
 .input-container {
@@ -31,6 +45,10 @@ form {
 .input-container:focus-within,
 .input-container:hover {
   background: var(--linear-gradient);
+}
+
+.submit-button {
+  margin-top: 24px;
 }
 
 .submit-button:hover:not(:disabled) {
@@ -49,4 +67,8 @@ form {
 
 .invalid-field {
   background: var(--red);
+}
+
+.form-date-row {
+  width: 115%;
 }
