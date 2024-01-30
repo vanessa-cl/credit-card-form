@@ -72,3 +72,27 @@
 .form-date-row {
   width: 115%;
 }
+
+@media screen and (min-width: 1025px){
+  .card-form {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 0;
+    margin-left: 100px;
+  }
+
+  .form-wrapper {
+    width: 45%;
+  }
+
+  .form-row, .form-date-row {
+    margin-bottom: 16px;
+  }
+
+  .form-label {
+    font-size: 16px;
+  }
+}

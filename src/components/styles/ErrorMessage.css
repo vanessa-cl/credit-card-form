@@ -4,3 +4,9 @@
   letter-spacing: 0px;
   margin-top: 10px;
 }
+
+@media screen and (min-width: 1025px){
+  .message {
+    font-size: 14px;
+  }
+}

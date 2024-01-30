@@ -19,9 +19,9 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 30%;
+  height: 243px;
   color: var(--white);
-  margin-bottom: 32px
+  margin-bottom: 32px;
 }
 
 .card-front-image,
@@ -63,7 +63,7 @@
 .card-cvc,
 .card-info {
   font-size: 10px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 .card-info {
@@ -78,4 +78,52 @@
 .card-number {
   font-size: 18px;
   margin-bottom: 16px;
+}
+
+@media screen and (min-width: 1025px) {
+  .card-details {
+    background-image: url("../../assets/images/bg-main-desktop.png");
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 100dvb;
+    margin-bottom: 0;
+  }
+
+  .card-front {
+    top: auto;
+    bottom: 4%;
+    left: 29%;
+  }
+
+  .card-back {
+    top: 0%;
+    left: 50%;
+    bottom: auto;
+  }
+
+  .card-front-image,
+  .card-back-image,
+  .details-front {
+    width: 27rem;
+    height: 15rem;
+  }
+
+  .details-front {
+    padding: 28px 32px;
+  }
+
+  .card-logo {
+    width: 90px;
+    height: 50px;
+  }
+
+  .card-number {
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+
+  .card-info, .card-cvc {
+    font-size: 16px;
+  }
 }

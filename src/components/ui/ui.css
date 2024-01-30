@@ -35,3 +35,10 @@ input[type="number"] {
   appearance: textfield;
   -moz-appearance: textfield;
 }
+
+@media screen and (min-width: 1025px) {
+  input,
+  button {
+    font-size: 16px;
+  }
+}
