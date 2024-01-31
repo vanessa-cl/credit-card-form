@@ -5,7 +5,7 @@ import Button from "./ui/Button";
 
 export default function CompletedSubmit({ setIsFormCompleted, setFormValues }) {
   return (
-    <section className="confirm-section">
+    <section className="confirm-section" data-testid="confirm-section">
       <img src={iconComplete} alt="checkmark" />
       <div className="confirm-message-wrapper">
         <h1>Thank you!</h1>

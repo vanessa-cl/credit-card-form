@@ -38,7 +38,7 @@ export default function CardForm({
   };
 
   return (
-    <form className="card-form">
+    <form className="card-form" data-testid="card-form">
       <div className="form-wrapper">
         <div className="form-row">
           <label className="form-label" htmlFor="cardholder-name">
